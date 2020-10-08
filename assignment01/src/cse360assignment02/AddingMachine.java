@@ -1,79 +1,93 @@
 //Assignment #1
 // Name: Matthew Yost
-// Lecture Th 9:00
-// Description: This program has the declarations of methods
-// that have yet to be defined for an adding machine. The methods
-// will be modified in a later date
+// Lecture CSE 360 Th 9:00
+// Description: This program gives full functionality
+// to the AdderMachine class
 /**
- *  This program contains methods for the
- *  class AddingMachine in which most of them
- *  don't return anything. Specifically,the methods 
- *  int getTotal() returns 0 and String toString() returns an
- *  empty string. The methods add(int value) subtract(int value)
- *  and clear() do not return anything. The class has one
- *  attribute named private int total. In a future version, all of the
- *  above methods will be updated to give AddingMachine correct functionality.
+ *  Full functionality to the AddingMachine class is given.
+ *  Two attributes are maintained: String history and int total.
+ *  total will store the result of repeatedly performing an addition or 
+ *  subtractions. history will record each of the additions
+ *  and subtractions and will be used to display to the user. There
+ *  is a constructor that initializes the attributes to their default values
+ *  and a clear method to reset the attributes to their default values.
+ *  The method int getTotal() is a getter method and String toString() returns the
+ *  history attribute. The methods: void add(int value), void subtract(int value)
+ *  help make the attributes maintain their proper values.
  *  
  *  @author Matthew Yost
- *  @version 1.0
+ *  @version 2.0
  *  @since 2020-10-07
  */
 package cse360assignment02;
 
 public class AddingMachine {
   private int total;
+  private String history;
   
   /*
-   * Constructor initializes the attribute total to 0.
+   * Constructor initializes the attribute total to 0
+   * and the history attribute to "0".
    */
   public AddingMachine () {
-    total = 0;  // not needed - included for clarity
+	  total = 0;
+	  history = "0";
   }
   
   /*
-   * This method takes no parameters;
-   * will be given correct functionality in later version
+   * This method is a getter method
+   * that just returns the attribute total
    * @return int
    */
   public int getTotal () {
-    return 0;
+    return total;
   }
   
   /*
-   * This method just takes a single parameter
-   * and currently has no functionality implemented
+   * This method takes a single parameter
+   * and sets the history attribute with history + " + " + value
+   * It also updates the total by adding value to total
    * @param value
-   * 
    */ 
   public void add (int value) {
+	  
+	  total = value + total;
+	  String newHistory = history + " + " + value;
+	  history = newHistory;
   }
  
   /*
-   * This method just takes a single parameter
-   * and currently has no functionality implemented
+   * This method takes an integer value
+   * and sets the history attribute with
+   * history + " - " + value
+   * It also updates the total by setting total to be 
+   * total - value
    * @param value
-   * 
-   */ 
+   */
   public void subtract (int value) {
+	  total = total - value;
+	  String newHistory = history + " - " + value;
+	  history = newHistory;
   }
   
   /*
-   * This method does not take any parameter
-   * and returns an empty string; it will
-   * be given more functionality given in later version
+   * This method will be used to display output to the user
+   * Hence, it returns the history string value that keeps
+   * tracking of all additions/subtractions.
    * @return string
    */
   public String toString () {
-    return "";
+    return history;
   }
   
   /*
-   * This method takes no parameters and currently
-   * does not do any functionality; in a later version
-   * this method will be given functionality.
-   * @param unused
-   * @return nothing
+   * This method clears the attributes:
+   * history and value to be set to their
+   * default values. That is, history = ""
+   * and total = 0.
    */
   public void clear() {
+	  history = "";
+	  total = 0;
   }
 }
